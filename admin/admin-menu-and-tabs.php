@@ -220,11 +220,11 @@ class Disciple_Tools_Post_Types_Tab_General {
                                 <input type="text" name="new_post_type_key" required>
                             </label>
                             <label style="display: block">
-                                Singular post type<br>
+                                Singular Label<br>
                                 <input type="text" name="new_post_type_singular" required>
                             </label>
                             <label style="display: block">
-                                Singular post type<br>
+                                Plural Label<br>
                                 <input type="text" name="new_post_type_plural" required>
                             </label>
                             <br>
