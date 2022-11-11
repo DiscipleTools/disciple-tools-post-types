@@ -29,7 +29,7 @@ class Disciple_Tools_Post_Types_Base {
         $this->single_name = $single_name;
         $this->plural_name = $plural_name;
         add_action( 'after_setup_theme', [ $this, 'after_setup_theme' ], 100 );
-        add_filter( "dt_capabilities", [ $this, "dt_capabilities" ], 100, 1 );
+        add_filter( 'dt_capabilities', [ $this, 'dt_capabilities' ], 100, 1 );
     }
 
     public function after_setup_theme(){

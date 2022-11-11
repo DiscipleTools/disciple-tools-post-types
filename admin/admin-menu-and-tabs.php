@@ -113,18 +113,18 @@ class Disciple_Tools_Post_Types_Tab_General {
 
     public function process_form(){
 
-        if ( isset( $_POST['post_type_create_nonce'] ) && wp_verify_nonce( $_POST['post_type_create_nonce'],'post_type_create') ){
+        if ( isset( $_POST['post_type_create_nonce'] ) && wp_verify_nonce( $_POST['post_type_create_nonce'], 'post_type_create' ) ){
             $post_submission = dt_recursive_sanitize_array( $_POST );
             if ( isset( $_POST['add_new_post_type'] ) ){
                 $custom_post_types = get_option( 'dt_custom_post_types', [] );
                 if ( !empty( $post_submission['new_post_type_key'] ) && !empty( $post_submission['new_post_type_singular'] ) && !empty( $post_submission['new_post_type_plural'] ) ){
                     $post_type_key = dt_create_field_key( $post_submission['new_post_type_key'] );
-                    if ( !isset( $custom_post_types[$post_type_key])){
+                    if ( !isset( $custom_post_types[$post_type_key] ) ){
                         $custom_post_types[$post_type_key] = [
                             'single_name' => $post_submission['new_post_type_singular'],
                             'plural_name' => $post_submission['new_post_type_plural'],
                         ];
-                        update_option('dt_custom_post_types', $custom_post_types );
+                        update_option( 'dt_custom_post_types', $custom_post_types );
                         return true;
                     }
                 }
@@ -132,8 +132,8 @@ class Disciple_Tools_Post_Types_Tab_General {
             if ( isset( $_POST['delete_custom_post_type'] ) ){
                 $custom_post_types = get_option( 'dt_custom_post_types', [] );
                 if ( isset( $custom_post_types[$post_submission['delete_custom_post_type']] ) ){
-                    unset ( $custom_post_types[$post_submission['delete_custom_post_type']] );
-                    update_option('dt_custom_post_types', $custom_post_types );
+                    unset( $custom_post_types[$post_submission['delete_custom_post_type']] );
+                    update_option( 'dt_custom_post_types', $custom_post_types );
                     return true;
                 }
             }
