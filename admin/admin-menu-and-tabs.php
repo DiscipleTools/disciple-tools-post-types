@@ -113,7 +113,7 @@ class Disciple_Tools_Post_Types_Tab_General {
 
     public function process_form(){
 
-        if ( isset( $_POST['post_type_create_nonce'] ) && wp_verify_nonce( $_POST['post_type_create_nonce'], 'post_type_create' ) ){
+        if ( isset( $_POST['post_type_create_nonce'] ) && wp_verify_nonce( sanitize_key( wp_unslash( $_POST['post_type_create_nonce'] ) ), 'post_type_create' ) ){
             $post_submission = dt_recursive_sanitize_array( $_POST );
             if ( isset( $_POST['add_new_post_type'] ) ){
                 $custom_post_types = get_option( 'dt_custom_post_types', [] );
